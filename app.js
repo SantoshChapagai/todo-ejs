@@ -9,17 +9,17 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
-let items = ["study", "cook", "eat"];
-let workItems = [];
+const items = ["study", "cook", "eat"];
+const workItems = [];
 
 app.get("/", function (req, res) {
-  let day = date.getDate();
+  const day = date.getDate();
   res.render("list", { listTitle: day, todoItems: items });
 });
 
 app.post("/", function (req, res) {
-  let item = req.body.todo;
-  let type = req.body.list;
+  const item = req.body.todo;
+  const type = req.body.list;
   if (type === "Work") {
     workItems.push(item);
     res.redirect("/work");
@@ -38,7 +38,7 @@ app.get("/about", function (req, res) {
 })
 
 app.post("/work", function (req, res) {
-  let item = req.body.todo;
+  const item = req.body.todo;
   workItems.push(item);
   res.redirect("/work");
 });
